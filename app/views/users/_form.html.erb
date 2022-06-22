@@ -1,0 +1,22 @@
+<%= form_with model: @user do |f| %>
+  <div>
+    <%=f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <br>
+  <div>
+    <%=f.label :phone %>
+    <%= f.text_field :phone %>
+  <br>
+  <br>
+  <div>
+    <%=f.label :email %>
+    <%= f.text_field :email %>
+  <br>
+  <div>
+    <%=f.label :role_id , 'Role'%>
+    <%= collection_select(:user, :role_ids, Role.all, :id, :name)%>
+  </div>
+  <br>
+  <%= f.submit %>
+<% end %>
