@@ -1,0 +1,21 @@
+<h2>City Index</h2>
+<table class="t1">
+  <thead>
+    <th>Name</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </thead>
+  <tbody>
+    <% @cities.each do |city| %>
+      <tr>
+        <td><%= city.name %></td>
+        <td><%= link_to "Edit", edit_city_path(city) %></td>
+        <td><%= link_to "Destroy", city_path(city), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "New city", new_city_path %>
