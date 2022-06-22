@@ -1,0 +1,14 @@
+<h2>Category Index</h2>
+<table class="t1">
+  <thead>
+    <th>Name</th>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "New category", new_category_path %>
