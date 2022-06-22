@@ -1,0 +1,33 @@
+<h2>Event Index</h2>
+<table class="t1">
+  <thead>
+    <th>Name</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>City</th>
+    <th>Location</th>
+    <th>Category</th>
+    <th>Seat left</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.start_time %></td>
+        <td><%= event.end_time %></td>
+        <td><%= event.location.city.name %></td>
+        <td><%= event.location.name %></td>
+        <td><%= event.category.name%></td>
+        <td><%= event.location.capacity - event.bookings.sum(:capacity)%></td>
+        <td><%= link_to "Edit", edit_event_path(event) %></td>
+        <td><%= link_to "Destroy", event_path(event), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "New event", new_event_path %>
