@@ -1,0 +1,20 @@
+<%= form_with model: [ @user, @user.bookings.build ] do |f| %>
+
+  <div>
+    <%=f.label :event_id %>
+    <%= collection_select(:booking, :event_id, Event.all, :id, :name)%>
+    <% @booking.errors.full_messages_for(:event_id).each do |message| %>
+      <div class="message"><%= message %></div>
+    <% end %>
+  </div>
+  <br>
+  <div>
+    <%=f.label :capacity %>
+    <%= f.text_field :capacity %>
+    <% @booking.errors.full_messages_for(:capacity).each do |message| %>
+      <div class="message"><%= message %></div>
+    <% end %>
+  </div>
+  <br>
+  <%= f.submit %>
+<% end %>
